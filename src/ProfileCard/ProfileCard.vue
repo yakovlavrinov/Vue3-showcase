@@ -4,6 +4,7 @@ import VerificationIcon from './assets/VerificationIcon.svg'
 import FollowersIcon from './assets/FollowersIcon.svg'
 import ProjectsIcon from './assets/ProjectsIcon.svg'
 import Plus from './assets/Plus.svg'
+import { computed } from 'vue'
 
 interface User {
   lastName: string
@@ -13,108 +14,123 @@ interface User {
   projects: number
 }
 
+// ховер дизеблет 
+// обработчик по желанию
+// картинга из данных
+// продумать другую стилизацию и смену по параметрам 
+// добавить переключатели в лайаут 
+
 // https://www.figma.com/design/BHf457pBw34fbyGDwscjIb/Profile-Card--Community-?node-id=1-23&t=DjJCAzaIhn1ZHWbz-0
 
-const user = {
-  lastName: 'Sophie',
-  firstName: 'Bennett',
-  bio: 'Product Designer who focuses on simplicity & usability.',
-  followers: 312,
-  projects: 48,
-}
+const { user } = defineProps<{ user: User }>()
+
+const fullName = computed(() => `${user.lastName} ${user.firstName}`)
 </script>
 
 <template>
-  <div class="layout">
-    <div class="user-card">
-      <div class="user-photo">
-        <img :src="Photo" alt="Photo" />
+  <div class="card">
+    <div class="photo">
+      <img :src="Photo" alt="Photo" />
+    </div>
+    <div class="info">
+      <div class="title">
+        <h3>{{ fullName }}</h3>
+        <img :src="VerificationIcon" alt="VerificationIcon" />
       </div>
-      <div class="user-info">
-        <div class="user-title">
-          <h3>{{ user.lastName + ' ' + user.firstName }}</h3>
-          <img :src="VerificationIcon" alt="VerificationIcon" />
-        </div>
-        <p>{{ user.bio }}</p>
+      <p>{{ user.bio }}</p>
+    </div>
+    <div class="stats">
+      <div class="followers">
+        <img :src="FollowersIcon" alt="Followers" />
+        <p>{{ user.followers }}</p>
       </div>
-      <div class="user-stats">
-        <div class="user-stats-followers">
-          <img :src="FollowersIcon" alt="" />
-          <p>{{ user.followers }}</p>
-        </div>
-        <div class="user-stats-post">
-          <img :src="ProjectsIcon" alt="" />
-          <p>{{ user.projects }}</p>
-        </div>
-        <button><span>Follow</span><img :src="Plus" alt="Plus" /></button>
+      <div class="posts">
+        <img :src="ProjectsIcon" alt="Projects" />
+        <p>{{ user.projects }}</p>
       </div>
+      <button><span>Follow</span><img :src="Plus" alt="Plus" /></button>
     </div>
   </div>
 </template>
 
-<style scoped>
-.layout {
-  height: 100vh;
-  background-color: #f5f5f5;
-}
+<style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-.user-card {
-  width: 280px;
-  height: 479px;
-  margin: 0 auto;
-  padding: 4px;
+.card {
+  max-width: 280px;
+  width: 100%;
+  padding: 8px;
   border-radius: 40px;
   background-color: #fcfcfc;
+  font-family: 'Inter', sans-serif;
+
+  .photo {
+    img {
+      width: 264px;
+      height: 280px;
+      border-radius: 32px;
+    }
+  }
 }
 
-.user-photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.user-info {
+.info {
   padding: 0px 20px;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 15px;
+    color: #767676;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
 }
 
-.user-info p {
-  color: #767676;
-}
-
-.user-photo img {
-  width: 264px;
-  height: 280px;
-  border-radius: 40px;
-}
-
-.user-title {
+.title {
   display: flex;
+  margin: 20px 0 4px 0;
   gap: 8px;
-}
 
-.user-stats {
+  h3 {
+    font-weight: 500;
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+  }
+}
+.stats {
   display: flex;
   justify-content: space-around;
-}
+  align-items: center;
+  margin-bottom: 16px;
 
-.user-stats-followers {
-  display: flex;
-  gap: 4px;
-}
-.user-stats-post {
-  display: flex;
-  gap: 4px;
+  .followers,
+  .posts {
+    display: flex;
+    gap: 4px;
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+    }
+  }
 }
 
 button {
-  width: 109px;
+  padding: 11px 22px;
   border-radius: 32px;
   display: flex;
-  gap: 4;
+  gap: 4px;
   justify-content: center;
   align-items: center;
+  border: 1px solid rgba(24, 24, 24, 0.03);
+  box-shadow: inset 0 2px 6px 0 #fff, inset 0 -2px 4px 0 rgba(137, 137, 137, 0.08);
+  background-color: #efefef;
+
+  span {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+  }
 }
 </style>
-
-
 

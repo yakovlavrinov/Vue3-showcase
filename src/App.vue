@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ProfileCard from './ProfileCard/ProfileCard.vue';
+
+import { ProfileCard } from './ProfileCard';
 import './reset.css'
 
 </script>
