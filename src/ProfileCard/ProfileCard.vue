@@ -14,11 +14,11 @@ interface User {
   projects: number
 }
 
-// ховер дизеблет 
+// ховер дизеблет
 // обработчик по желанию
 // картинга из данных
-// продумать другую стилизацию и смену по параметрам 
-// добавить переключатели в лайаут 
+// продумать другую стилизацию и смену по параметрам
+// добавить переключатели в лайаут
 
 // https://www.figma.com/design/BHf457pBw34fbyGDwscjIb/Profile-Card--Community-?node-id=1-23&t=DjJCAzaIhn1ZHWbz-0
 
@@ -125,12 +125,28 @@ button {
   border: 1px solid rgba(24, 24, 24, 0.03);
   box-shadow: inset 0 2px 6px 0 #fff, inset 0 -2px 4px 0 rgba(137, 137, 137, 0.08);
   background-color: #efefef;
+  transition: all 0.8s;
 
   span {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 15px;
   }
+
+  &:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-1px);
+    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 2px rgba(0, 0, 0, 0.05),
+      0 4px 10px rgba(0, 0, 0, 0.12);
+
+    span {
+      transform: translateY(-1px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.12), inset 0 -1px 2px rgba(255, 255, 255, 0.6);
+  }
 }
 </style>
-
