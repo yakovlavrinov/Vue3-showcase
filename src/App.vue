@@ -2,6 +2,9 @@
 
 import { ProfileCard } from './ProfileCard';
 import './reset.css'
+import './theme.css'
+
+document.documentElement.setAttribute('data-theme', 'dark')
 
 </script>
 

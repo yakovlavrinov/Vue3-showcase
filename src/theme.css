@@ -1,0 +1,7 @@
+:root {
+  --card-bg: #fcfcfc;
+}
+
+[data-theme='dark'] {
+  --card-bg: #2F2F2F;
+}

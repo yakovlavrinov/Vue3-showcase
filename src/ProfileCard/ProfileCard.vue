@@ -61,7 +61,7 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
   width: 100%;
   padding: 8px;
   border-radius: 40px;
-  background-color: #fcfcfc;
+  background-color: var(--card-bg);
   font-family: 'Inter', sans-serif;
 
   .photo {
