@@ -3,8 +3,10 @@ import Photo from './assets/Photo.png'
 import VerificationIcon from './assets/VerificationIcon.svg'
 import FollowersIcon from './assets/FollowersIcon.svg'
 import ProjectsIcon from './assets/ProjectsIcon.svg'
-import Plus from './assets/Plus.svg'
-import { computed } from 'vue'
+import PlusLight from './assets/PlusLight.svg'
+import PlusDark from './assets/PlusDark.svg'
+import { computed, ref } from 'vue'
+import { useTheme } from '../hooks/useThame'
 
 interface User {
   lastName: string
@@ -23,6 +25,9 @@ interface User {
 // https://www.figma.com/design/BHf457pBw34fbyGDwscjIb/Profile-Card--Community-?node-id=1-23&t=DjJCAzaIhn1ZHWbz-0
 
 const { user } = defineProps<{ user: User }>()
+const { theme, toggleTheme } = useTheme()
+
+const plus = computed(() => (theme.value === 'dark' ? PlusDark : PlusLight))
 
 const fullName = computed(() => `${user.lastName} ${user.firstName}`)
 </script>
@@ -48,7 +53,7 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
         <img :src="ProjectsIcon" alt="Projects" />
         <p>{{ user.projects }}</p>
       </div>
-      <button><span>Follow</span><img :src="Plus" alt="Plus" /></button>
+      <button v-on:click="toggleTheme"><span>Follow</span><img :src="plus" alt="Plus" /></button>
     </div>
   </div>
 </template>
