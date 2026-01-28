@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher.vue'
 import ProfileCard from './ProfileCard.vue'
 
 const user = {
@@ -12,6 +13,9 @@ const user = {
 
 <template>
   <div class="layout">
+    <div class="toggle">
+      <ThemeSwitcher />
+    </div>
     <ProfileCard :user="user" />
   </div>
 </template>
@@ -23,5 +27,10 @@ const user = {
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
+}
+
+.toggle {
+  position: absolute;
+  top: 50px;
 }
 </style>

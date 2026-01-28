@@ -53,7 +53,7 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
         <img :src="ProjectsIcon" alt="Projects" />
         <p>{{ user.projects }}</p>
       </div>
-      <button v-on:click="toggleTheme"><span>Follow</span><img :src="plus" alt="Plus" /></button>
+      <button><span>Follow</span><img :src="plus" alt="Plus" /></button>
     </div>
   </div>
 </template>
