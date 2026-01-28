@@ -61,7 +61,7 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
   width: 100%;
   padding: 8px;
   border-radius: 40px;
-  background-color: var(--card-bg);
+  background-color: var(--card-bg-color);
   font-family: 'Inter', sans-serif;
 
   .photo {
@@ -79,7 +79,7 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
 
   p {
     font-size: 15px;
-    color: #767676;
+    color: var(--card-text-color);
     font-family: 'Inter', sans-serif;
     font-weight: 400;
   }
@@ -89,8 +89,8 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
   display: flex;
   margin: 20px 0 4px 0;
   gap: 8px;
-
   h3 {
+    color: var(--card-title-color);
     font-weight: 500;
     font-size: 22px;
     font-family: 'Inter', sans-serif;
@@ -111,6 +111,7 @@ const fullName = computed(() => `${user.lastName} ${user.firstName}`)
       font-family: 'Inter', sans-serif;
       font-weight: 500;
       font-size: 15px;
+      color: var(--card-stats-color);
     }
   }
 }
@@ -122,22 +123,22 @@ button {
   gap: 4px;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(24, 24, 24, 0.03);
-  box-shadow: inset 0 2px 6px 0 #fff, inset 0 -2px 4px 0 rgba(137, 137, 137, 0.08);
-  background-color: #efefef;
+  border: 1px solid var(--card-button-border-color);
+  box-shadow: var(--card-button-shadow);
+  background-color: var(--card-button-bg-color);
   transition: all 0.8s;
 
   span {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 15px;
+    color: var(--card-button-text-color);
   }
 
   &:hover {
-    background-color: #f5f5f5;
+    background-color: var(--card-button-bg-color-hover);
     transform: translateY(-1px);
-    box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 2px rgba(0, 0, 0, 0.05),
-      0 4px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--card-button-shadow-hover);
 
     span {
       transform: translateY(-1px);
@@ -146,7 +147,7 @@ button {
 
   &:active {
     transform: translateY(0);
-    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.12), inset 0 -1px 2px rgba(255, 255, 255, 0.6);
+    box-shadow: var(--card-button-shadow-active);
   }
 }
 </style>
